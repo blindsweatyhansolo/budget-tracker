@@ -6,7 +6,9 @@ const CACHE_NAME = APP_PREFIX + VERSION;
 // create array to hold files to cache
 // ! REMEMBER TO ADD MANIFEST.JSON ONCE SET UP! //
 const FILES_TO_CACHE = [
+  './',
   './index.html',
+  './manifest.json',
   './css/styles.css',
   './js/idb.js',
   './js/index.js',
