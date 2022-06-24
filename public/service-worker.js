@@ -58,3 +58,21 @@ self.addEventListener('activate', function(e) {
 });
 
 // intercept fetch requests
+self.addEventListener('fetch', function(e) {
+  console.log('fetch request: ' + e.request.url);
+
+  e.respondWith(
+    caches.match(e.request).then(function(request) {
+      // check for matches in cache
+      if (request) {
+        // if available, respond with cache
+        console.log('responding with cache: ' + e.request.url);
+        return request;
+      } else {
+        // if no match found in cache, respond with fetch request
+        console.log('file not cached, fetching: ' + e.request.url);
+        return fetch(e.request);
+      }
+    })
+  );
+});
